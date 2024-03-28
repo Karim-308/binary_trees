@@ -13,10 +13,10 @@ size_t binary_tree_height(const binary_tree_t *tree)
     if (tree == NULL)
         return (0);
 
-    left_height = binary_tree_height(tree->left);
-    right_height = binary_tree_height(tree->right);
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
 
-    return (1 + (left_height > right_height ? left_height : right_height));
+	return (1 + (left_height > right_height ? left_height : right_height));
 }
 
 /**
@@ -26,10 +26,10 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
 /**
@@ -39,24 +39,24 @@ size_t binary_tree_size(const binary_tree_t *tree)
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-    size_t height, size, i;
-    int is_leaf = 0;
+	size_t height, size, i;
+	int is_leaf = 0;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    height = binary_tree_height(tree);
-    size = binary_tree_size(tree);
+	height = binary_tree_height(tree);
+	size = binary_tree_size(tree);
 
-    for (i = 0; i < height; i++)
-    {
-        size_t nodes_at_level = 1 << i;
-        if (size < nodes_at_level)
-            return (0);
-        else if (size == nodes_at_level)
-            is_leaf = 1;
-        size -= nodes_at_level;
-    }
+	for (i = 0; i < height; i++)
+	{
+		size_t nodes_at_level = 1 << i;
+		if (size < nodes_at_level)
+			return (0);
+		else if (size == nodes_at_level)
+			is_leaf = 1;
+		size -= nodes_at_level;
+	}
 
-    return (is_leaf);
+	return (is_leaf);
 }
